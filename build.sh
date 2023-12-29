@@ -8,7 +8,7 @@ mkdir -p build
 if ! test -f compressed_mingw_includes.tar.zst; then
 	cd build
 	BUILD_DIR=$(realpath .)
-	wget -nc -O mingw-w64-$MINGW_VER.tar.gz https://github.com/mingw-w64/mingw-w64/archive/refs/tags/v$MINGW_VER.tar.gz
+	wget -c -O mingw-w64-$MINGW_VER.tar.gz https://github.com/mingw-w64/mingw-w64/archive/refs/tags/v$MINGW_VER.tar.gz
 	tar -xzf mingw-w64-$MINGW_VER.tar.gz
 	cd mingw-w64-$MINGW_VER
 	./configure --prefix="$BUILD_DIR" --without-crt --with-libraries=no --with-tools=no
@@ -20,4 +20,7 @@ if ! test -f compressed_mingw_includes.tar.zst; then
     cd ..
 fi
 
-tar -zcf build/compressed_mingw_includes.tar.gz build.zig build.zig.zon compressed_mingw_includes.zig compressed_mingw_includes.tar.zst
+# The --transform is to add a prefix, since Zig expects
+# to be able to strip one level of components.
+# See https://github.com/ziglang/zig/issues/17620
+tar --transform 's,^,compressed_mingw_includes/,' -zcf build/compressed_mingw_includes.tar.gz build.zig build.zig.zon compressed_mingw_includes.zig compressed_mingw_includes.tar.zst
