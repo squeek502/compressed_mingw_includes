@@ -1,6 +1,6 @@
 .{
     .name = "compressed_mingw_includes",
-    .version = "11.0.1",
+    .version = "1.0.0+mingw-11.0.1",
     .paths = .{
         "build.zig",
         "build.zig.zon",
