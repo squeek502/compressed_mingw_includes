@@ -20,7 +20,4 @@ if ! test -f compressed_mingw_includes.tar.zst; then
     cd ..
 fi
 
-# The --transform is to add a prefix, since Zig expects
-# to be able to strip one level of components.
-# See https://github.com/ziglang/zig/issues/17620
-tar --transform 's,^,compressed_mingw_includes/,' -zcf build/compressed_mingw_includes.tar.gz build.zig build.zig.zon compressed_mingw_includes.zig compressed_mingw_includes.tar.zst
+tar -cf build/compressed_mingw_includes.tar build.zig build.zig.zon compressed_mingw_includes.zig compressed_mingw_includes.tar.zst
