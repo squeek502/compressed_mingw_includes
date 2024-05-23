@@ -24,8 +24,8 @@ The `.tar.gz` then needs to be hosted (see [Releases](https://github.com/squeek5
     // ...
     .dependencies = .{
         .compressed_mingw_includes = .{
-            .url = "https://github.com/squeek502/compressed_mingw_includes/releases/download/1.0.1/compressed_mingw_includes.tar",
-            .hash = "1220e8f97c4078545148dc2bab756527d7eb1f8f018db11572665c53be725703feec",
+            .url = "https://github.com/squeek502/compressed_mingw_includes/releases/download/1.0.2/compressed_mingw_includes.tar",
+            .hash = "12209b760f6780e143f9cde540487494292aaf07c08b49ac5f58f8339307a733db3e",
         },
     },
     // ...
